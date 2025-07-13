@@ -1,6 +1,11 @@
 [sources.kubernetes_logs]
 type = "kubernetes_logs"
 
+[transforms.parse_logs]
+type = "remap"
+inputs = ["kubernetes_logs"]
+source = '''.structured = parse_json(.message)'''
+
 [sinks.opensearch]
 type = "opensearch"
 inputs = ["kubernetes_logs"]
