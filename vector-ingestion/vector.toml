@@ -1,0 +1,9 @@
+[sources.kubernetes_logs]
+type = "kubernetes_logs"
+
+[sinks.opensearch]
+type = "opensearch"
+inputs = ["kubernetes_logs"]
+endpoint = "http://localhost:9200"
+index = "sre-logs"
+auth.strategy = "none"
